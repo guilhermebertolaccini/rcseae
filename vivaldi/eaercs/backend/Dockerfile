@@ -11,7 +11,6 @@ COPY tsconfig*.json ./
 RUN npm ci
 
 # Copiar código fonte
-COPY prisma.config.ts ./
 COPY prisma ./prisma/
 COPY src ./src/
 
@@ -45,7 +44,6 @@ COPY package*.json ./
 RUN npm ci --only=production
 
 # Copiar Prisma schema e migrations
-COPY prisma.config.ts ./
 COPY prisma ./prisma/
 
 # Gerar Prisma Client para produção
