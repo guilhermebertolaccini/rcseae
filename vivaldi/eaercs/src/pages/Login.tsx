@@ -21,7 +21,8 @@ const Login = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/auth/login", {
+      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3013";
+      const response = await fetch(`${apiUrl}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
