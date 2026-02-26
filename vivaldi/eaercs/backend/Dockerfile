@@ -27,7 +27,7 @@ RUN npx tsc prisma/seed.ts --outDir dist/prisma --esModuleInterop --skipLibCheck
 RUN ls -la dist/
 
 # Verificar se o build foi criado
-RUN test -f dist/main.js
+RUN test -f dist/src/main.js
 
 # Production stage
 FROM node:20-alpine
@@ -56,7 +56,7 @@ COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
 
 # Verificar novamente se os arquivos estão corretos
-RUN ls -la dist/ && test -f dist/main.js
+RUN ls -la dist/src/ && test -f dist/src/main.js
 
 # Criar diretório para uploads
 RUN mkdir -p /app/uploads
@@ -72,4 +72,4 @@ EXPOSE 3013
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
   CMD wget --quiet --tries=1 --spider http://localhost:3013/health || exit 1
 
-CMD ["node", "dist/main"]
+CMD ["node", "dist/src/main"]
