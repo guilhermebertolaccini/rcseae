@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 260 20% 6%;
+    --foreground: 270 20% 95%;
+
+    --card: 260 18% 10%;
+    --card-foreground: 270 20% 95%;
+
+    --popover: 260 18% 10%;
+    --popover-foreground: 270 20% 95%;
+
+    --primary: 270 80% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 265 40% 18%;
+    --secondary-foreground: 270 20% 90%;
+
+    --muted: 260 15% 14%;
+    --muted-foreground: 260 10% 55%;
+
+    --accent: 280 70% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 260 20% 16%;
+    --input: 260 20% 16%;
+    --ring: 270 80% 60%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 260 18% 8%;
+    --sidebar-foreground: 270 20% 90%;
+    --sidebar-primary: 270 80% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 265 40% 18%;
+    --sidebar-accent-foreground: 270 20% 90%;
+    --sidebar-border: 260 20% 16%;
+    --sidebar-ring: 270 80% 60%;
+
+    /* Custom tokens */
+    --glow-purple: 270 80% 60%;
+    --glow-accent: 290 70% 55%;
+    --surface-elevated: 260 18% 12%;
+    --surface-overlay: 260 20% 8%;
+    --gold: 38 75% 55%;
+    --gold-light: 42 85% 65%;
+    --gold-dark: 35 70% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-xl border border-border/50 rounded-xl;
+  }
+  .glow-border {
+    @apply border border-primary/30;
+    box-shadow: 0 0 20px hsl(270 80% 60% / 0.1), inset 0 0 20px hsl(270 80% 60% / 0.05);
+  }
+  .glow-text {
+    text-shadow: 0 0 30px hsl(270 80% 60% / 0.5);
+  }
+  .gradient-purple {
+    background: linear-gradient(135deg, hsl(270 80% 60%), hsl(290 70% 55%));
+  }
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(270 80% 60%), hsl(290 70% 55%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .gradient-gold {
+    background: linear-gradient(135deg, hsl(38 75% 55%), hsl(42 85% 65%));
+  }
+  .gradient-gold-text {
+    background: linear-gradient(135deg, hsl(38 75% 55%), hsl(42 85% 65%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .glow-gold {
+    box-shadow: 0 0 30px hsl(38 75% 55% / 0.3), 0 0 60px hsl(38 75% 55% / 0.1);
+  }
+  .phone-mockup {
+    @apply relative bg-card rounded-[2.5rem] border-2 border-border/50 overflow-hidden;
+    box-shadow: 0 25px 50px -12px hsl(270 80% 60% / 0.15);
+  }
+}
